@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -17,6 +18,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
+
 
     buildTypes {
         release {
@@ -39,8 +42,15 @@ android {
     }
 }
 
+
 dependencies {
 
+    // OkHttp (for HTTP requests)
+    implementation("com.squareup.okhttp3:okhttp:4.12.0") // Or libs alias
+    // Kotlinx Serialization (for parsing JSON responses)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3") // Or libs alias
+    implementation("com.squareup.okio:okio:3.2.0") // Add Okio explicitly (check for latest Okio
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
